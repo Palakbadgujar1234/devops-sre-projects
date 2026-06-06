@@ -1,0 +1,73 @@
+version: '2'
+
+tasks:
+  code-checks:
+    include:
+      - dind
+    steps:
+      - name: checks-setup
+        image: icr.io/continuous-delivery/base-images/base:v1.19.0
+        script: |
+          #!/usr/bin/env bash
+          cd "$WORKSPACE/$(load_repo app-repo path)"
+          echo "Installing dependencies"
+          npm install
+      - name: static-scan
+        include:
+          - docker-socket
+
+  code-build:
+    include:
+      - dind
+    steps:
+      - name: unit-test
+        image: icr.io/continuous-delivery/base-images/base:v1.19.0
+        script: |
+          #!/usr/bin/env bash
+          cd "$WORKSPACE/$(load_repo app-repo path)"
+          echo "Running unit tests"
+          npm test
+      - name: build-artifact
+        include:
+          - docker-socket
+        image: icr.io/continuous-delivery/base-images/base:v1.19.0
+        script: |
+          #!/usr/bin/env bash
+          echo "Building Docker image from Dockerfile"
+          ${COMMONS_PATH}/build-artifact/docker.sh --source "Dockerfile" --repo-key "app-repo"
+
+  deploy-checks:
+    include:
+      - dind
+    steps:
+      - name: deploy
+        image: icr.io/continuous-delivery/base-images/base:v1.19.0
+        script: |
+          #!/usr/bin/env bash
+          echo "This sample keeps deployment simple."
+          echo "In a real setup, this stage would deploy with helm or kubectl."
+      - name: acceptance-test
+        image: icr.io/continuous-delivery/base-images/base:v1.19.0
+        script: |
+          #!/usr/bin/env bash
+          echo "Acceptance test placeholder"
+
+  deploy-release:
+    steps:
+      - name: run-stage
+        image: icr.io/continuous-delivery/base-images/base:v1.19.0
+        script: |
+          #!/usr/bin/env bash
+          echo "Releasing build metadata to inventory"
+          ${COMMONS_PATH}/release/release.sh
+
+finally:
+  code-ci-finish:
+    steps:
+      - name: run-stage
+        image: icr.io/continuous-delivery/base-images/base:v1.19.0
+        script: |
+          #!/usr/bin/env bash
+          echo "Pipeline finished"
+
+# Made with Bob

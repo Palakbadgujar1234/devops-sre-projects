@@ -1,0 +1,20 @@
+{
+  "name": "sample-sps-devsecops-app",
+  "version": "1.0.0",
+  "description": "Beginner-friendly sample app for IBM SPS DevSecOps toolchain learning",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "node test/app.test.js"
+  },
+  "keywords": [
+    "devsecops",
+    "ibm-cloud",
+    "toolchain",
+    "sonar",
+    "terraform",
+    "beginner"
+  ],
+  "author": "Bob",
+  "license": "Apache-2.0"
+}
