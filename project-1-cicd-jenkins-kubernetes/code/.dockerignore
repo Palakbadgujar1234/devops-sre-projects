@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+npm-debug.log
+package-lock.json
+
+# Testing
+coverage/
+.nyc_output/
+test/
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# CI/CD
+Jenkinsfile
+.github/
+
+# Documentation
+README.md
+docs/
+
+# Kubernetes
+k8s/
+
+# Made with Bob
