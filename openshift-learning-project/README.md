@@ -62,28 +62,28 @@ The master index contains your complete learning roadmap with all guides organiz
 
 #### **Phase 2: Core Concepts (Week 2-3)**
 
-4. OpenShift Web Console
+1. OpenShift Web Console
 2. Pods & Deployments Deep Dive
 3. Services & Networking
 4. Storage & Persistence
 
 #### **Phase 3: Advanced Features (Week 4-5)**
 
-8. OpenShift Routes
+1. OpenShift Routes
 2. ImageStreams & Builds
 3. Templates & Operators
 4. ConfigMaps & Secrets
 
 #### **Phase 4: Production Skills (Week 6-8)**
 
-12. Security & RBAC
+1. Security & RBAC
 2. CI/CD Integration
 3. Monitoring & Logging
 4. [Complete Microservices Project](./15-COMPLETE-MICROSERVICES-PROJECT.md)
 
 #### **Phase 5: Mastery (Week 9-10)**
 
-16. Advanced Topics
+1. Advanced Topics
 2. [Troubleshooting Guide](./17-TROUBLESHOOTING-GUIDE.md)
 3. [Interview Preparation](./18-INTERVIEW-PREPARATION.md)
 
